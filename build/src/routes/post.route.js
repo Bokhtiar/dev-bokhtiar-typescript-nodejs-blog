@@ -23,12 +23,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.service = void 0;
-const Post = __importStar(require("../services/post.service"));
-const Category = __importStar(require("../services/category.service"));
-const SubCategory = __importStar(require("../services/subCategory.service"));
-exports.service = {
-    Post,
-    Category,
-    SubCategory,
-};
+exports.PostRouter = void 0;
+const PostController = __importStar(require("../controller/post.controller"));
+const express_1 = require("express");
+const validators_1 = require("../validators");
+exports.PostRouter = (0, express_1.Router)();
+exports.PostRouter.get('/', PostController.index);
+exports.PostRouter.get('/:id', PostController.show);
+exports.PostRouter.post('/', validators_1.validaors.Post.createUpdate, PostController.store);

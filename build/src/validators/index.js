@@ -24,9 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validaors = void 0;
+const Post = __importStar(require("./post.validators"));
 const Category = __importStar(require("./category.validator"));
 const SubCategory = __importStar(require("./subCategory.validator"));
 exports.validaors = {
+    Post,
     Category,
     SubCategory
 };

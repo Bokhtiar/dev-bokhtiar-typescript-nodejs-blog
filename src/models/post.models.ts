@@ -12,11 +12,13 @@ const postSchema: Schema = new Schema<IPost>(
     category: {
       type: String,
       required: true,
+      ref:"categories",
       trim: true,
     },
     subCategory: {
       type: String,
       required: true,
+      ref: "SubCategory",
       trim: true,
     },
     description: {
