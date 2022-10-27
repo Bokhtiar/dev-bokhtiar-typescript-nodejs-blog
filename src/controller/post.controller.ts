@@ -51,17 +51,63 @@ export const store = async (
 };
 
 /**single resource show */
-export const show = async (
+export const show = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const result = await service.Post.FindById(id);
+    res.status(200).json({
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};
+
+/**resource update */
+export const update = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const { title, category, subCategory, description, image } = req.body;
+    const documents = {
+      title,
+      category,
+      subCategory,
+      description,
+      image,
+    };
+    await service.Post.findByIdAndUpdate(id, documents);
+    res.status(201).json({
+      status: true,
+      message: "Post updated successfully done",
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};
+
+/**destroy post */
+export const destroy = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
     try {
         const {id} = req.params
-        const result = await service.Post.FindById(id)
+        await service.Post.findByIdAndDelete(id)
         res.status(200).json({
-            status : true,
-            data: result
+            status: true,
+            message: "Post deleted successfully done"
         })
     } catch (error) {
         if(error){
@@ -70,5 +116,3 @@ export const show = async (
         }
     }
 };
-
-

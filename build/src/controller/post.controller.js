@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.show = exports.store = exports.index = void 0;
+exports.destroy = exports.update = exports.show = exports.store = exports.index = void 0;
 const services_1 = require("../services");
 /**list of resource */
 const index = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -60,7 +60,7 @@ const show = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
         const result = yield services_1.service.Post.FindById(id);
         res.status(200).json({
             status: true,
-            data: result
+            data: result,
         });
     }
     catch (error) {
@@ -71,3 +71,47 @@ const show = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.show = show;
+/**resource update */
+const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const { title, category, subCategory, description, image } = req.body;
+        const documents = {
+            title,
+            category,
+            subCategory,
+            description,
+            image,
+        };
+        yield services_1.service.Post.findByIdAndUpdate(id, documents);
+        res.status(201).json({
+            status: true,
+            message: "Post updated successfully done",
+        });
+    }
+    catch (error) {
+        if (error) {
+            console.log(error);
+            next(error);
+        }
+    }
+});
+exports.update = update;
+/**destroy post */
+const destroy = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        yield services_1.service.Post.findByIdAndDelete(id);
+        res.status(200).json({
+            status: true,
+            message: "Post deleted successfully done"
+        });
+    }
+    catch (error) {
+        if (error) {
+            console.log(error);
+            next(error);
+        }
+    }
+});
+exports.destroy = destroy;

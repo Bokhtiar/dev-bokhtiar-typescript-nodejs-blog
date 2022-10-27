@@ -30,4 +30,6 @@ const validators_1 = require("../validators");
 exports.PostRouter = (0, express_1.Router)();
 exports.PostRouter.get('/', PostController.index);
 exports.PostRouter.get('/:id', PostController.show);
+exports.PostRouter.delete('/:id', PostController.destroy);
 exports.PostRouter.post('/', validators_1.validaors.Post.createUpdate, PostController.store);
+exports.PostRouter.put('/:id', validators_1.validaors.Post.createUpdate, PostController.update);
