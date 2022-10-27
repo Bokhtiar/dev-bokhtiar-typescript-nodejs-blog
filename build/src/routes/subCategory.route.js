@@ -30,3 +30,6 @@ const validators_1 = require("../validators");
 exports.SubCategoryRouter = (0, express_1.Router)();
 exports.SubCategoryRouter.get("/", SubCategoryController.index);
 exports.SubCategoryRouter.post("/", validators_1.validaors.SubCategory.createUpdate, SubCategoryController.store);
+exports.SubCategoryRouter.get("/:id", SubCategoryController.show);
+exports.SubCategoryRouter.put("/:id", validators_1.validaors.SubCategory.createUpdate, SubCategoryController.update);
+exports.SubCategoryRouter.delete("/:id", SubCategoryController.destroy);

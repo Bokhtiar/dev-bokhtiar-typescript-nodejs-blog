@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.storeResource = exports.FindallSubCategory = void 0;
+exports.FindByIdDelete = exports.findOneByIdAndUpdate = exports.FindById = exports.storeResource = exports.FindallSubCategory = void 0;
 const models_1 = require("../models");
 /**find all resource */
 const FindallSubCategory = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -25,3 +25,18 @@ const storeResource = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield newSubCategory.save();
 });
 exports.storeResource = storeResource;
+/**single resource show */
+const FindById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.SUbCategories.findById(id).populate("category", "category_name");
+});
+exports.FindById = FindById;
+/* Find specific resource by id and update keys */
+const findOneByIdAndUpdate = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.SUbCategories.findByIdAndUpdate(id, { $set: Object.assign({}, data) });
+});
+exports.findOneByIdAndUpdate = findOneByIdAndUpdate;
+/**find by id destroy */
+const FindByIdDelete = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.SUbCategories.findByIdAndDelete(id);
+});
+exports.FindByIdDelete = FindByIdDelete;

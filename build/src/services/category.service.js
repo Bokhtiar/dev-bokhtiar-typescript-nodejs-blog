@@ -43,10 +43,3 @@ const findOneByIdAndDestroy = (id) => __awaiter(void 0, void 0, void 0, function
     return yield models_1.Models.Categories.findByIdAndDelete(id);
 });
 exports.findOneByIdAndDestroy = findOneByIdAndDestroy;
-// /**public service for devision */
-// export const findAllDivisionByKey = async (): Promise<IDivision[] | []> => {
-//   return await Models.Division.find(
-//     {},
-//     { created_by: 0, createdAt: 0, updatedAt: 0 }
-//   );
-// };

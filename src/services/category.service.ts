@@ -41,11 +41,3 @@ export const findOneByIdAndDestroy = async (
 ): Promise<ICategory | null> => {
   return await Models.Categories.findByIdAndDelete(id);
 };
-
-// /**public service for devision */
-// export const findAllDivisionByKey = async (): Promise<IDivision[] | []> => {
-//   return await Models.Division.find(
-//     {},
-//     { created_by: 0, createdAt: 0, updatedAt: 0 }
-//   );
-// };

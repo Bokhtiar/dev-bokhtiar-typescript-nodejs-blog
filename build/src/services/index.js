@@ -28,5 +28,5 @@ const Category = __importStar(require("../services/category.service"));
 const SubCategory = __importStar(require("../services/subCategory.service"));
 exports.service = {
     Category,
-    SubCategory
+    SubCategory,
 };
