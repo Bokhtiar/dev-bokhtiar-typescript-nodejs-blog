@@ -23,10 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.service = void 0;
-const Category = __importStar(require("../services/category.service"));
-const SubCategory = __importStar(require("../services/subCategory.service"));
-exports.service = {
-    Category,
-    SubCategory
-};
+exports.SubCategoryRouter = void 0;
+const express_1 = require("express");
+const SubCategoryController = __importStar(require("../controller/subCategory.controller"));
+exports.SubCategoryRouter = (0, express_1.Router)();
+exports.SubCategoryRouter.get('/', SubCategoryController.index);
