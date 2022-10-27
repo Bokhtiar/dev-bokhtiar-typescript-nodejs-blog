@@ -9,10 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FindallSubCategory = void 0;
-const subCategory_model_1 = require("../models/subCategory.model");
+exports.storeResource = exports.FindallSubCategory = void 0;
+const models_1 = require("../models");
 /**find all resource */
 const FindallSubCategory = () => __awaiter(void 0, void 0, void 0, function* () {
-    return yield subCategory_model_1.SUbCategories.find();
+    return yield models_1.Models.SUbCategories.find().populate("category", "category_name");
 });
 exports.FindallSubCategory = FindallSubCategory;
+/**store of resource */
+const storeResource = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    const newSubCategory = new models_1.Models.SUbCategories({
+        subCategory_name: data.subCategory_name,
+        category: data.category,
+    });
+    return yield newSubCategory.save();
+});
+exports.storeResource = storeResource;

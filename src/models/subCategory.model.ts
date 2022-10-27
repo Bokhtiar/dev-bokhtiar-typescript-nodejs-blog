@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { ISubCategory, ISubCategoryCreateOrUpdate } from "../types/subCategory";
+
 const subCategorySchema: Schema = new Schema<ISubCategory>({
   subCategory_name: {
     type: String,
@@ -8,7 +9,7 @@ const subCategorySchema: Schema = new Schema<ISubCategory>({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: "Categories",
+    ref: "categories",
     required: true,
   }
 },{

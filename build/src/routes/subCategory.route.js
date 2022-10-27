@@ -26,5 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubCategoryRouter = void 0;
 const express_1 = require("express");
 const SubCategoryController = __importStar(require("../controller/subCategory.controller"));
+const validators_1 = require("../validators");
 exports.SubCategoryRouter = (0, express_1.Router)();
-exports.SubCategoryRouter.get('/', SubCategoryController.index);
+exports.SubCategoryRouter.get("/", SubCategoryController.index);
+exports.SubCategoryRouter.post("/", validators_1.validaors.SubCategory.createUpdate, SubCategoryController.store);
