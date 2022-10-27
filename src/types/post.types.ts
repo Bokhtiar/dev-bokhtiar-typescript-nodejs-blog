@@ -9,7 +9,7 @@ export interface IPost {
   description: string;
 }
 
-export interface ICategoryCreateOrUpdated {
+export interface IPostCreateOrUpdated {
   title: string;
   image: string;
   category: string;
