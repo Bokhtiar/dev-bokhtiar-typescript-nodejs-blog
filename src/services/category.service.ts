@@ -27,20 +27,20 @@ export const createCategory = async (
   return await newCategory.save();
 };
 
-// /* Find specific resource by id and update keys */
-// export const findOneByIdAndUpdate = async (
-//   id: string,
-//   data: IDivisionCreateUpdate
-// ): Promise<IDivision | null> => {
-//   return await Models.Division.findByIdAndUpdate(id, { $set: { ...data } });
-// };
+/* Find specific resource by id and update keys */
+export const findOneByIdAndUpdate = async (
+  id: string,
+  data: ICategoryCreateOrUpdated
+): Promise<ICategory | null> => {
+  return await Models.Categories.findByIdAndUpdate(id, { $set: { ...data } });
+};
 
-// /* Find specific resource by id and destroy */
-// export const findOneByIdAndDestroy = async (
-//   id: string
-// ): Promise<IDivision | null> => {
-//   return await Models.Division.findByIdAndDelete(id);
-// };
+/* Find specific resource by id and destroy */
+export const findOneByIdAndDestroy = async (
+  id: string
+): Promise<ICategory | null> => {
+  return await Models.Categories.findByIdAndDelete(id);
+};
 
 // /**public service for devision */
 // export const findAllDivisionByKey = async (): Promise<IDivision[] | []> => {

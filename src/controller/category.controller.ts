@@ -64,3 +64,49 @@ export const show = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+/**update resource */
+export const update = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const { category_name } = req.body;
+    const documets = {
+      category_name,
+    };
+    /**service */
+    await service.Category.findOneByIdAndUpdate(id, documets);
+    res.status(201).json({
+      status: true,
+      message: "Category updated successfully.",
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};
+
+/**destroy resource */
+export const destroy = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    await service.Category.findOneByIdAndDestroy(id);
+    res.status(200).json({
+      status: true,
+      message: "Category deleted successfully."
+    });
+  } catch (error) {
+    if (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+};

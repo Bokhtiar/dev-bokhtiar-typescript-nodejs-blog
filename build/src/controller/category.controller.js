@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.show = exports.store = exports.index = void 0;
+exports.destroy = exports.update = exports.show = exports.store = exports.index = void 0;
 const services_1 = require("../services");
 /* List of resources */
 const index = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
@@ -67,3 +67,44 @@ const show = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.show = show;
+/**update resource */
+const update = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const { category_name } = req.body;
+        const documets = {
+            category_name,
+        };
+        /**service */
+        yield services_1.service.Category.findOneByIdAndUpdate(id, documets);
+        res.status(201).json({
+            status: true,
+            message: "Category updated successfully.",
+        });
+    }
+    catch (error) {
+        if (error) {
+            console.log(error);
+            next(error);
+        }
+    }
+});
+exports.update = update;
+/**destroy resource */
+const destroy = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        yield services_1.service.Category.findOneByIdAndDestroy(id);
+        res.status(200).json({
+            status: true,
+            message: "Category deleted successfully."
+        });
+    }
+    catch (error) {
+        if (error) {
+            console.log(error);
+            next(error);
+        }
+    }
+});
+exports.destroy = destroy;

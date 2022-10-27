@@ -31,3 +31,5 @@ exports.categoryRoute = (0, express_1.Router)();
 exports.categoryRoute.get("/", CategoryController.index);
 exports.categoryRoute.post("/", validators_1.validaors.Category.createUpdate, CategoryController.store);
 exports.categoryRoute.get("/:id", CategoryController.show);
+exports.categoryRoute.put("/:id", validators_1.validaors.Category.createUpdate, CategoryController.update);
+exports.categoryRoute.delete("/:id", CategoryController.destroy);

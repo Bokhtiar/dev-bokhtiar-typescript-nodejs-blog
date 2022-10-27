@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCategory = exports.findById = exports.findAll = void 0;
+exports.findOneByIdAndDestroy = exports.findOneByIdAndUpdate = exports.createCategory = exports.findById = exports.findAll = void 0;
 const models_1 = require("../models");
 /* find resources by paginate */
 const findAll = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -33,19 +33,16 @@ const createCategory = (data) => __awaiter(void 0, void 0, void 0, function* () 
     return yield newCategory.save();
 });
 exports.createCategory = createCategory;
-// /* Find specific resource by id and update keys */
-// export const findOneByIdAndUpdate = async (
-//   id: string,
-//   data: IDivisionCreateUpdate
-// ): Promise<IDivision | null> => {
-//   return await Models.Division.findByIdAndUpdate(id, { $set: { ...data } });
-// };
-// /* Find specific resource by id and destroy */
-// export const findOneByIdAndDestroy = async (
-//   id: string
-// ): Promise<IDivision | null> => {
-//   return await Models.Division.findByIdAndDelete(id);
-// };
+/* Find specific resource by id and update keys */
+const findOneByIdAndUpdate = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.Categories.findByIdAndUpdate(id, { $set: Object.assign({}, data) });
+});
+exports.findOneByIdAndUpdate = findOneByIdAndUpdate;
+/* Find specific resource by id and destroy */
+const findOneByIdAndDestroy = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.Categories.findByIdAndDelete(id);
+});
+exports.findOneByIdAndDestroy = findOneByIdAndDestroy;
 // /**public service for devision */
 // export const findAllDivisionByKey = async (): Promise<IDivision[] | []> => {
 //   return await Models.Division.find(
