@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.storeResource = exports.FindAll = void 0;
+exports.findDestroy = exports.updateResource = exports.findOneKey = exports.storeResource = exports.FindAll = void 0;
 const models_1 = require("../models");
 /**list of resource */
 const FindAll = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -24,3 +24,18 @@ const storeResource = (data) => __awaiter(void 0, void 0, void 0, function* () {
     return yield newNotification.save();
 });
 exports.storeResource = storeResource;
+/**single resource show */
+const findOneKey = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.Notification.findById(id);
+});
+exports.findOneKey = findOneKey;
+/**update resource */
+const updateResource = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.Notification.findByIdAndUpdate(id, { $set: Object.assign({}, data) });
+});
+exports.updateResource = updateResource;
+/**destroy resource */
+const findDestroy = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield models_1.Models.Notification.findByIdAndDelete(id);
+});
+exports.findDestroy = findDestroy;

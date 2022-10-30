@@ -29,4 +29,7 @@ exports.NotificationRouter = (0, express_1.Router)();
 const NotificationController = __importStar(require("../controller/notification.controller"));
 const validators_1 = require("../validators");
 exports.NotificationRouter.get('/', NotificationController.index);
+exports.NotificationRouter.get('/:id', NotificationController.show);
+exports.NotificationRouter.delete('/:id', NotificationController.destroy);
 exports.NotificationRouter.post('/', validators_1.validaors.Notification.createUpdate, NotificationController.store);
+exports.NotificationRouter.put('/:id', validators_1.validaors.Notification.createUpdate, NotificationController.update);
