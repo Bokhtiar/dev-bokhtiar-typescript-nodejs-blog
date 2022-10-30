@@ -5,9 +5,11 @@ const category_model_1 = require("./category.model");
 const comment_model_1 = require("./comment.model");
 const subCategory_model_1 = require("./subCategory.model");
 const post_models_1 = require("./post.models");
+const notification_model_1 = require("./notification.model");
 exports.Models = {
     Categories: category_model_1.Categories,
     Comment: comment_model_1.Comment,
     SUbCategories: subCategory_model_1.SUbCategories,
-    Posts: post_models_1.Posts
+    Posts: post_models_1.Posts,
+    Notification: notification_model_1.Notification
 };
