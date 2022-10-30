@@ -25,10 +25,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.service = void 0;
 const Post = __importStar(require("../services/post.service"));
+const Comment = __importStar(require("../services/comment.service"));
 const Category = __importStar(require("../services/category.service"));
 const SubCategory = __importStar(require("../services/subCategory.service"));
 exports.service = {
     Post,
+    Comment,
     Category,
     SubCategory,
 };
