@@ -27,8 +27,10 @@ exports.validaors = void 0;
 const Post = __importStar(require("./post.validators"));
 const Category = __importStar(require("./category.validator"));
 const SubCategory = __importStar(require("./subCategory.validator"));
+const Notification = __importStar(require("./notification.validator"));
 exports.validaors = {
     Post,
     Category,
-    SubCategory
+    SubCategory,
+    Notification
 };

@@ -27,5 +27,6 @@ exports.NotificationRouter = void 0;
 const express_1 = require("express");
 exports.NotificationRouter = (0, express_1.Router)();
 const NotificationController = __importStar(require("../controller/notification.controller"));
+const validators_1 = require("../validators");
 exports.NotificationRouter.get('/', NotificationController.index);
-exports.NotificationRouter.post('/');
+exports.NotificationRouter.post('/', validators_1.validaors.Notification.createUpdate, NotificationController.store);
