@@ -25,6 +25,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TodoRouter = void 0;
 const express_1 = require("express");
+const validators_1 = require("../validators");
 const TodoController = __importStar(require("../controller/todo.controller"));
 exports.TodoRouter = (0, express_1.Router)();
 exports.TodoRouter.get('/', TodoController.index);
+exports.TodoRouter.get('/:id', TodoController.show);
+exports.TodoRouter.delete('/:id', TodoController.destroy);
+exports.TodoRouter.post('/', validators_1.validaors.Todo.createUpdate, TodoController.store);
+exports.TodoRouter.put('/:id', validators_1.validaors.Todo.createUpdate, TodoController.update);
